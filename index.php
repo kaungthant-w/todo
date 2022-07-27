@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +49,7 @@
                             <td><?php echo $value['description'] ?></td>
                             <td><?php echo date('Y-m-d', strtotime($value['created_at'])) ?></td>
                             <td>
-                                <a href="#" class="btn btn-warning"> <i class="far fa-edit"></i> Edit</a>
+                                <a href="edit.php?id=<?php echo $value['id']; ?>" class="btn btn-warning"> <i class="far fa-edit"></i> Edit</a>
                                 <a href="#" class="btn btn-danger"> <i class="fas fa-trash"></i> Delete</a>
                             </td>
                         </tr>

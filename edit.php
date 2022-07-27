@@ -1,7 +1,29 @@
 <?php
+    require "config.php";
+    if($_POST) {
+        
+        $title = $_POST["title"];
+        $des = $_POST["description"];
+        $id = $_POST["id"];
 
-require "config.php";
+        $pdostatement = $pdo -> prepare("UPDATE todo SET title = '$title', description = '$des' WHERE id ='$id'");
+        $result =$pdostatement->execute();
 
+        print_r($result);
+
+        if($result) {
+            echo "<script>alert('New ToDo is updated ');window.location.href='index.php';</script>";
+        }
+        
+    } else {
+        $pdostatement = $pdo -> prepare("SELECT * FROM todo WHERE id=".$_GET['id']);
+        $pdostatement -> execute();
+        $result = $pdostatement -> fetchAll();
+
+        // print "<pre>";
+        //     print_r($result[0]);
+        // print "</pre>";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,14 +45,18 @@ require "config.php";
             <h1>Create ToDo List</h1>
 
             <form action="" method="post">
+
+                <input type="hidden" name="id" value="<?php echo $result[0]["id"] ?>">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" id="title" class="form-control">
+                    <input type="text" name="title" id="title" class="form-control" value="<?php echo $result[0]["title"] ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description" class="form-control">
+                    <textarea name="description" id="description" class="form-control" cols="10" rows="5">
+                         <?php echo $result[0]["description"]; ?>
+                    </textarea>
                 </div>
 
                 <div class="form-group mt-3">
