@@ -14,7 +14,7 @@
         <div class="card-body">
 
             <h1>Todo List Application</h1>
-            <a href="#" class="btn btn-success my-3"> <i class="fas fa-plus"></i> Create New</a>
+            <a href="add.php" class="btn btn-success my-3"> <i class="fas fa-plus"></i> Create New</a>
 
             <table class="table table-striped table-bordered">
                 <thead>
