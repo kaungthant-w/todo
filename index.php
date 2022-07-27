@@ -7,8 +7,7 @@
     <title>Home</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
 </head>
 <body>
     <div class="container mt-5">
@@ -16,7 +15,7 @@
         <div class="card-body">
 
         <?php
-            require "config.php";
+            include_once "config.php";
             $pdostatement = $pdo -> prepare("SELECT * FROM todo ORDER BY id DESC");
             $pdostatement -> execute();
             $result = $pdostatement -> fetchAll();
