@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css"/>
 </head>
 <body>
     <div class="container mt-5">
@@ -50,7 +50,7 @@
                             <td><?php echo date('Y-m-d', strtotime($value['created_at'])) ?></td>
                             <td>
                                 <a href="edit.php?id=<?php echo $value['id']; ?>" class="btn btn-warning"> <i class="far fa-edit"></i> Edit</a>
-                                <a href="delete.php?id=<?php echo $value['id']; ?>" class="btn btn-danger"> <i class="fas fa-trash"></i> Delete</a>
+                                <a href="delete.php?id=<?php echo $value['id']; ?>" class="btn btn-danger"> <i class="fa-solid fa-trash-can"></i> Delete</a>
                             </td>
                         </tr>
                     <?php 
