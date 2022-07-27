@@ -2,23 +2,6 @@
 
 require "config.php";
 
-if($_POST) {
-    $title = $_POST["title"];
-$des = $_POST["description"];
-
-$pdostatement = $pdo -> prepare("INSERT INTO todo(title, description)VAlUES(:title, :description)");
-$result = $pdostatement -> execute(
-    array(
-        ':title' => $title,
-        ':description' => $des
-    )
-);
-
-if($result) {
-    echo "<script>alert('New ToDo is added.');window.location.href='index.php';</script>";
-}
-
-}
 ?>
 
 <!DOCTYPE html>

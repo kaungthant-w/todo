@@ -13,6 +13,13 @@
     <div class="card">
         <div class="card-body">
 
+        <?php
+            require "config.php";
+            $pdostatement = $pdo -> prepare("SELECT * FROM todo ORDER BY id DESC");
+            $pdostatement -> execute();
+            $result = $pdostatement -> fetchAll();
+        ?>
+
             <h1>Todo List Application</h1>
             <a href="add.php" class="btn btn-success my-3"> <i class="fas fa-plus"></i> Create New</a>
 
@@ -27,26 +34,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Cash</td>
-                        <td>to send group</td>
-                        <td>27.6.2022</td>
-                        <td>
-                            <a href="#" class="btn btn-warning"> <i class="far fa-edit"></i> Edit</a>
-                            <a href="#" class="btn btn-danger"> <i class="fas fa-trash"></i> Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Credit</td>
-                        <td>to send group</td>
-                        <td>27.6.2022</td>
-                        <td>
-                            <a href="#" class="btn btn-warning"> <i class="far fa-edit"></i> Edit</a>
-                            <a href="#" class="btn btn-danger"> <i class="fas fa-trash"></i> Delete</a>
-                        </td>
-                    </tr>
+
+                <?php
+                
+                    $i = 1;
+                    if($result) {
+                        foreach( $result as $value) {
+                    ?>
+                        <tr>
+                            <td><?php echo $value['id'] ?></td>
+                            <td><?php echo $value['title'] ?></td>
+                            <td><?php echo $value['description'] ?></td>
+                            <td><?php echo date('Y-m-d', strtotime($value['created_at'])) ?></td>
+                            <td>
+                                <a href="#" class="btn btn-warning"> <i class="far fa-edit"></i> Edit</a>
+                                <a href="#" class="btn btn-danger"> <i class="fas fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                    <?php 
+                    
+                    $i++;
+
+                        }
+                    }
+                ?>
                 </tbody>
             </table>
 
