@@ -42,7 +42,7 @@
                         foreach( $result as $value) {
                     ?>
                         <tr>
-                            <td><?php echo $value['id'] ?></td>
+                            <td><?php echo $i ?></td>
                             <td><?php echo $value['title'] ?></td>
                             <td><?php echo $value['description'] ?></td>
                             <td><?php echo date('Y-m-d', strtotime($value['created_at'])) ?></td>
